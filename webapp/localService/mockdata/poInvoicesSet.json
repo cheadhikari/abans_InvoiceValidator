@@ -1,0 +1,32 @@
+{
+    "d": {
+        "results": [
+            {
+                "__metadata": {
+                    "id": "https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/poInvoicesSet(Company='5000',Documentno='1900000035',Fiscalyear='2020')",
+                    "uri": "https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/poInvoicesSet(Company='5000',Documentno='1900000035',Fiscalyear='2020')",
+                    "type": "ZMM_INVOICEVALIDATOR_SRV.poInvoices"
+                },
+                "Company": "5000",
+                "Documentno": "1900000035",
+                "Fiscalyear": "2020",
+                "Currency": "LKR",
+                "Amount": "35000.000",
+                "Pono": "4600000010"
+            },
+            {
+                "__metadata": {
+                    "id": "https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/poInvoicesSet(Company='5000',Documentno='1900000036',Fiscalyear='2020')",
+                    "uri": "https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/poInvoicesSet(Company='5000',Documentno='1900000036',Fiscalyear='2020')",
+                    "type": "ZMM_INVOICEVALIDATOR_SRV.poInvoices"
+                },
+                "Company": "5000",
+                "Documentno": "1900000036",
+                "Fiscalyear": "2020",
+                "Currency": "LKR",
+                "Amount": "35000.000",
+                "Pono": "4600000010"
+            }
+        ]
+    }
+}

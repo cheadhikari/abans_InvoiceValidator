@@ -1,0 +1,162 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "com.abans_InvoiceValidator",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0"
+        },
+        "dataSources": {
+            "ZMM_INVOICEVALIDATOR_SRV": {
+                "uri": "/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZMM_INVOICEVALIDATOR_SRV/metadata.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "zfb03",
+                    "action": "display"
+                },
+                "intent2": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "zfb60",
+                    "action": "create"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.abans_InvoiceValidator.view.Main",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.suite.ui.commons": {
+                    "minVersion": ""
+                },
+                "sap.ushell": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.abans_InvoiceValidator.i18n.i18n"
+                }
+            },
+            "poModel": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZMM_INVOICEVALIDATOR_SRV",
+                "preload": false
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "com.abans_InvoiceValidator.view",
+                "controlId": "app",
+                "clearAggregation": true,
+                "controlAggregation": "pages"
+            },
+            "targets": {
+                "PoHeader": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": false,
+                    "viewName": "PoHeader",
+                    "viewLevel": 1
+                },
+                "PoHistory": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "PoHistory",
+                    "viewLevel": 2
+                }
+            },
+            "routes": [
+                {
+                    "name": "PoHeader",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "PoHeader"
+                    ]
+                },
+                {
+                    "name": "PoHistory",
+                    "pattern": "PoHistory/{Pono},{Itemno}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "PoHistory"
+                    ]
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zinvvalidator",
+        "_version": "1.1.0"
+    }
+}

@@ -1,0 +1,18 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:ui="sap.suite.ui.commons"
+	controllerName="com.abans_InvoiceValidator.controller.PoHistory" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>tiPoHistory}" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<Panel>
+				<ui:ProcessFlow id="pfHistory" scrollable="true" nodePress="onNodePress" nodes="{pfNodesModel>/nodes}" lanes="{pfNodesModel>/lanes}">
+					<ui:nodes>
+						<ui:ProcessFlowNode laneId="{pfNodesModel>lane}" nodeId="{pfNodesModel>id}" title="{pfNodesModel>title}" titleAbbreviation="{pfNodesModel>titleAbbreviation}" children="{pfNodesModel>children}" state="{pfNodesModel>state}"
+							stateText="{pfNodesModel>stateText}" texts="{pfNodesModel>texts}" focused="{pfNodesModel>focused}"/>
+					</ui:nodes>
+					<ui:lanes>
+						<ui:ProcessFlowLaneHeader laneId="{pfNodesModel>id}" iconSrc="sap-icon://activity-items" text="{pfNodesModel>label}" position="{pfNodesModel>position}"/>
+					</ui:lanes>
+				</ui:ProcessFlow>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

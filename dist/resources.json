@@ -1,0 +1,88 @@
+{
+    "resources": [
+        {
+            "name": "test/initMockServer.js"
+        },
+        {
+            "name": "test/mockServer.html"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "controller/PoHistory.controller.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/PoHeader.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "i18n/i18n_en_US.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "localService/mockdata/poHistorySet.json"
+        },
+        {
+            "name": "localService/mockdata/poHeaderSet.json"
+        },
+        {
+            "name": "localService/mockdata/poInvoicesSet.json"
+        },
+        {
+            "name": "localService/mockdata/poItemsSet.json"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/ZMM_INVOICEVALIDATOR_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "view/InvoicesDialog.fragment.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/PoHistory.view.xml"
+        },
+        {
+            "name": "view/PoHeader.view.xml"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

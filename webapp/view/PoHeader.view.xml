@@ -1,0 +1,62 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:ui="sap.suite.ui.commons"
+	controllerName="com.abans_InvoiceValidator.controller.PoHeader" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>tiPoHeader}">
+		<content>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Label text="{i18n>lblPoNo}">
+					<layoutData>
+						<ToolbarLayoutData shrinkable="false"/>
+					</layoutData>
+				</Label>
+				<SearchField placeholder="{i18n>lblSearch}" width="11em" search="onSearch"/></Toolbar>
+			<ObjectHeader responsive="true" fullScreenOptimized="false" icon="sap-icon://activity-items" title="{i18n>lblPoNo} {poModel>Pono}"
+				number="{path:'poModel>Balance', formatter:'.formatter.currencyFormat'}" numberUnit="{poModel>Currency}" numberState="Success"
+				backgroundDesign="Transparent" class="sapUiResponsivePadding--header">
+				<ObjectAttribute title="{i18n>lblInvoicingParty}" text="{poModel>Supplier}"/>
+				<ObjectAttribute title="" text="{poModel>Suppliername}"/>
+				<statuses>
+					<ObjectStatus title="" text="{i18n>lblViewInvoices}" icon="sap-icon://lead" active="true" state="Success" press="onViewInvoices"/>
+				</statuses>
+			</ObjectHeader>
+			<Table id="tabPoItems" growing="true" growingThreshold="20" growingScrollToLoad="true" backgroundDesign="Transparent" sticky="ColumnHeaders">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="{i18n>lblPoItems}" level="H2"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>lblPoItem}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet">
+						<Text text="{i18n>lblShortText}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" hAlign="End">
+						<Text text="{i18n>lblQtyOrdered}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" hAlign="End">
+						<Text text="{i18n>lblQtyReceived}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" hAlign="End">
+						<Text text="{i18n>lblNetPrice}"/>
+					</Column>
+					<Column demandPopin="true" minScreenWidth="Tablet" hAlign="End">
+						<Text text="{i18n>lblNetValue}"/>
+					</Column>
+					<Column demandPopin="false" width="6em" hAlign="Center">
+						<Text text="{i18n>lblPoHistory}"/>
+					</Column>
+				</columns>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button text="{i18n>lblCreateInvoice}" type="Emphasized" press="onCreateInvoice"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

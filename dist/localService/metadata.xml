@@ -1,0 +1,119 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZMM_INVOICEVALIDATOR_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="poHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pono"/>
+                </Key>
+                <Property Name="Pono" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Vendor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Suppliername" Type="Edm.String" Nullable="false" MaxLength="35" sap:unicode="false" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Balance" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3" sap:unicode="false" sap:label="Amount in LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toPoInvoices" Relationship="ZMM_INVOICEVALIDATOR_SRV.asPoInvoice" FromRole="FromRole_asPoInvoice" ToRole="ToRole_asPoInvoice"/>
+                <NavigationProperty Name="toPoItems" Relationship="ZMM_INVOICEVALIDATOR_SRV.asPoItem" FromRole="FromRole_asPoItem" ToRole="ToRole_asPoItem"/>
+            </EntityType>
+            <EntityType Name="poItems" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pono"/>
+                    <PropertyRef Name="Itemno"/>
+                </Key>
+                <Property Name="Pono" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Itemno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matdesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Order Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Qtyordered" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="PO Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Qtyreceived" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="PO Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Netprice" Type="Edm.Decimal" Nullable="false" Precision="12" Scale="3" sap:unicode="false" sap:label="Net Price" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Netvalue" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:label="Net Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toPoHistory" Relationship="ZMM_INVOICEVALIDATOR_SRV.asPoHistory" FromRole="FromRole_asPoHistory" ToRole="ToRole_asPoHistory"/>
+            </EntityType>
+            <EntityType Name="poHistory" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pono"/>
+                    <PropertyRef Name="Itemno"/>
+                    <PropertyRef Name="Matdoc"/>
+                    <PropertyRef Name="Matyear"/>
+                </Key>
+                <Property Name="Pono" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Itemno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matdoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Material Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Mat. Doc. Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Uom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base Unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Grnqty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:label="Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="poInvoices" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Company"/>
+                    <PropertyRef Name="Documentno"/>
+                    <PropertyRef Name="Fiscalyear"/>
+                </Key>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Documentno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fiscalyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Amount" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3" sap:unicode="false" sap:label="Amount in LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pono" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Purchasing Doc." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="asPoHistory" sap:content-version="1">
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poItems" Multiplicity="1" Role="FromRole_asPoHistory"/>
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poHistory" Multiplicity="*" Role="ToRole_asPoHistory"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_asPoHistory">
+                        <PropertyRef Name="Pono"/>
+                        <PropertyRef Name="Itemno"/>
+                    </Principal>
+                    <Dependent Role="ToRole_asPoHistory">
+                        <PropertyRef Name="Pono"/>
+                        <PropertyRef Name="Itemno"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="asPoItem" sap:content-version="1">
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poHeader" Multiplicity="1" Role="FromRole_asPoItem"/>
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poItems" Multiplicity="*" Role="ToRole_asPoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_asPoItem">
+                        <PropertyRef Name="Pono"/>
+                    </Principal>
+                    <Dependent Role="ToRole_asPoItem">
+                        <PropertyRef Name="Pono"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="asPoInvoice" sap:content-version="1">
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poHeader" Multiplicity="1" Role="FromRole_asPoInvoice"/>
+                <End Type="ZMM_INVOICEVALIDATOR_SRV.poInvoices" Multiplicity="*" Role="ToRole_asPoInvoice"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_asPoInvoice">
+                        <PropertyRef Name="Pono"/>
+                    </Principal>
+                    <Dependent Role="ToRole_asPoInvoice">
+                        <PropertyRef Name="Pono"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMM_INVOICEVALIDATOR_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="poHeaderSet" EntityType="ZMM_INVOICEVALIDATOR_SRV.poHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="poItemsSet" EntityType="ZMM_INVOICEVALIDATOR_SRV.poItems" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="poHistorySet" EntityType="ZMM_INVOICEVALIDATOR_SRV.poHistory" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="poInvoicesSet" EntityType="ZMM_INVOICEVALIDATOR_SRV.poInvoices" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="asPoItemSet" Association="ZMM_INVOICEVALIDATOR_SRV.asPoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="poHeaderSet" Role="FromRole_asPoItem"/>
+                    <End EntitySet="poItemsSet" Role="ToRole_asPoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="asPoInvoiceSet" Association="ZMM_INVOICEVALIDATOR_SRV.asPoInvoice" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="poHeaderSet" Role="FromRole_asPoInvoice"/>
+                    <End EntitySet="poInvoicesSet" Role="ToRole_asPoInvoice"/>
+                </AssociationSet>
+                <AssociationSet Name="asPoHistorySet" Association="ZMM_INVOICEVALIDATOR_SRV.asPoHistory" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="poItemsSet" Role="FromRole_asPoHistory"/>
+                    <End EntitySet="poHistorySet" Role="ToRole_asPoHistory"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://sgits4hanadb.keells.lk:44301/sap/opu/odata/sap/ZMM_INVOICEVALIDATOR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
